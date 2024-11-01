@@ -19,6 +19,8 @@
                         </ul>
                     </div>
                 @endif --}}
+                {{-- @dump($categories) --}}
+
             </div>
         </div>
 
@@ -65,6 +67,14 @@
                         @error('box')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="categories" class="form-label">Categorie</label>
+                        <select class="form-control" name="categories" id="categories">
+                            @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="text-center ">
                         <button class="btn btn-primary">
