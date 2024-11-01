@@ -25,3 +25,4 @@ Route::get('/author/edit/{author}', [AuthorController::class, 'edit'])->name('au
 Route::put('/author/update/{author}', [AuthorController::class, 'update'])->name('author.update');
 Route::delete('/author/delete/{author}', [AuthorController::class,'destroy'])->name('author.destroy');
 Route::get('/profile',[PublicController::class,'profile'])->middleware('auth')->name('profile');
+Route::delete('/user/destroy', [PublicController::class,'delete'])->middleware('Auth')->name('user.delete');
