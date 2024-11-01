@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::table('authors', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('user_id')->nullable()->after('id')->onDelete('SET NULL');
+            $table->unsignedBigInteger('user_id')->nullable()->after('id')
+            // ->onDelete('SET NULL')
+            ;
             //user id è un chiave esterna
             $table->foreign('user_id')->references('id')->on('users');
         });

@@ -15,17 +15,30 @@ class PublicController extends Controller
         $boardgames = Game::all(); //!collezione di libri, collezione è un nome tecnico
         return view('welcome', compact('boardgames'));
     }
-public function profile()
-{
-    return view('profile');
-}
+    public function profile()
+    {
+        return view('profile');
+    }
 
-public function delete(){
-$user= Auth::user();
+    public function delete()
+    {
+        $user = Auth::user();
+        $user_authors = $user->authors;
 
-    // Auth::user()->delete();
-    dd('controlla il database');
-}
+        foreach ($user_authors as $author) {
+
+            $author->update(
+                [
+                    'user_id' => Null
+                ]
+            );
+        }
+
+        $user->delete();
+        // dd('controlla il database');
+        return redirect()->route('welcome');
+
+    }
 
     //
 }

@@ -22,4 +22,12 @@ class Game extends Model
     // public $players;
     // public $instructor;
     //
+
+
+    //! funzioni di relazione
+public function categories(){
+    $this   ->belongsToMany(Category::class);
+
+}
+
 }
